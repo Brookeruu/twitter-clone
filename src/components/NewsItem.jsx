@@ -2,6 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import emptyHeart from "../assets/Heart_icon_red_hollow.svg";
 import filledHeart from "../assets/Heart_icon_red_filled.svg";
+import greenFace from "../assets/greenFace.png";
+import vomitFace from "../assets/vomitFace.png";
 
 import * as styles from "../Styles/NewsItemStyles";
 
@@ -10,31 +12,80 @@ class NewsItem extends React.Component {
     super(props)
     this.props = props;
     this.state = {
-      favoriteClicked: false
+      votes: {favoriteClicked: false, dislikeClicked: false }
     }
     this.handleFavoriteClick = this.handleFavoriteClick.bind(this);
+    this.handleDislikeClick = this.handleDislikeClick.bind(this);
+
     let userName = '';
     let content = '';
 
   }
 
+  handleDislikeClick(){
+    let dislikeClicked = this.state.votes.dislikeClicked;
+    let favoriteClicked = this.state.votes.favoriteClicked;
+    if (dislikeClicked === false) {
+      this.setState(function(state) {
+        return {
+          votes: Object.assign({},
+            state.votes, {
+              favoriteClicked: false,
+              dislikeClicked: true
+          })
+        }
+      })
+    } else if (dislikeClicked === true) {
+      this.setState(function(state) {
+        return {
+          votes: Object.assign({},
+            state.votes, {
+              dislikeClicked: false
+          })
+        }
+      })
+    }
+  }
+
   handleFavoriteClick(){
-    let favoriteClicked = this.state.favoriteClicked;
-    if (favoriteClicked === false) {
-      this.setState({favoriteClicked: true });
-    } else if (favoriteClicked === true) {
-      this.setState({favoriteClicked: false});
+    let dislikeClicked = this.state.votes.dislikeClicked;
+    let favoriteClicked = this.state.votes.favoriteClicked;
+    if (favoriteClicked === false ) {
+      this.setState(function(state) {
+        return {
+          votes: Object.assign({},
+            state.votes, {
+              favoriteClicked: true,
+              dislikeClicked: false
+          })
+        }
+      })
+    } else if (favoriteClicked === true ) {
+      this.setState(function(state) {
+        return {
+          votes: Object.assign({},
+            state.votes, {
+              favoriteClicked: false,
+          })
+        }
+      })
     }
   }
 
 
   render() {
     let heart;
-    if (this.state.favoriteClicked === false) {
+    let dislikeFace;
+    if (this.state.votes.favoriteClicked === false) {
       heart = emptyHeart
-    } else if (this.state.favoriteClicked === true) {
+    } else if (this.state.votes.favoriteClicked === true) {
       heart = filledHeart
     }
+    if (this.state.votes.dislikeClicked === false) {
+      dislikeFace = greenFace;
+    } else if (this.state.votes.dislikeClicked === true) {
+      console.log("hit");
+      dislikeFace = vomitFace;    }
     return (
       <div style={styles.myStyledComponentStyles}>
         <style jsx> {`
@@ -53,6 +104,7 @@ class NewsItem extends React.Component {
             <p>{this.props.content}</p>
             <p>
               <img onClick={this.handleFavoriteClick} src={heart}></img>
+              <img onClick={this.handleDislikeClick} src={dislikeFace}></img>
             </p>
         </div>
       </div>
