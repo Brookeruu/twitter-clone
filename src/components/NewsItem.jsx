@@ -19,6 +19,7 @@ class NewsItem extends React.Component {
 
     let userName = '';
     let content = '';
+    let timeStamp = '';
 
   }
 
@@ -99,13 +100,14 @@ class NewsItem extends React.Component {
         </div>
         <hr/>
         <div style={styles.itemContent}>
-          <p><em>User Name: {this.props.userName} </em></p>
+          <p><em>{this.props.userName} </em></p>
             <hr/>
             <p>{this.props.content}</p>
             <p>
               <img onClick={this.handleFavoriteClick} src={heart}></img>
               <img onClick={this.handleDislikeClick} src={dislikeFace}></img>
             </p>
+            <p>{this.props.timeStamp}</p>
         </div>
       </div>
 
@@ -114,7 +116,8 @@ class NewsItem extends React.Component {
 }
 NewsItem.propTypes = {
   userName: PropTypes.string,
-  content: PropTypes.string
+  content: PropTypes.string,
+  timeStamp: PropTypes.string
 }
 
 export default NewsItem;

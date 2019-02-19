@@ -43,6 +43,7 @@ class News extends React.Component {
         {this.state.masterNewsItemList.map((news) =>
           <NewsItem userName={news.userName}
             content={news.content}
+            timeStamp={news.timeStamp}
             key={news.id}/>
         )}
       </div>

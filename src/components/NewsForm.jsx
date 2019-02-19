@@ -31,7 +31,9 @@ function NewsForm(props) {
 
   function handleNewNewsItemFormSubmission(event) {
     event.preventDefault();
-    props.onAddingNewNewsItemToMasterNewsItemList({userName: _userName.value, content: _content.value, id: v4()});
+    const d = new Date();
+    const timeStamp = d.toDateString();
+    props.onAddingNewNewsItemToMasterNewsItemList({userName: _userName.value, content: _content.value, id: v4(), timeStamp: timeStamp});
     _userName.value = '';
     _content.value = '';
   }
@@ -55,9 +57,7 @@ function NewsForm(props) {
         </div>
         <button type="submit">Tweet</button>
       </form>
-      test123
       {props.onAddingNewNewsItemToMasterNewsItemList}
-      test456
     </div>
 
   );
