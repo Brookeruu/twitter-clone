@@ -1,9 +1,11 @@
 import React from "react";
+import { Switch, Route } from 'react-router-dom';
 import Header from "./Header";
 import Bio from "./Bio";
 import Friends from "./Friends";
 import News from "./News";
 import Profile from "./Profile";
+import UserList from './UserList';
 
 
 
@@ -36,24 +38,37 @@ function App(props) {
   }
 
   return (
-    <div style={myStyledComponentStyles}>
-      <div style={headerStyle}>
-        <Header/>
-      </div>
-      <div style={profileStyle}>
-        <Profile/>
-      </div>
-      <div style={bioStyle}>
-        <Bio/>
-      </div>
-      <div style={newsStyle}>
-        <News/>
-      </div>
-      <div style={friendsStyle}>
-        <Friends/>
-      </div>
-    </div>
-  );
-}
+    <Switch>
+      <Route exact path='/' render={()=>
+          <div style={myStyledComponentStyles}>
+            <div style={headerStyle}>
+              <Header/>
+            </div>
+            <div style={profileStyle}>
+              <Profile/>
+            </div>
+            <div style={bioStyle}>
+              <Bio/>
+            </div>
+            <div style={newsStyle}>
+              <News/>
+            </div>
+            <div style={friendsStyle}>
+              <Friends/>
+            </div>
+          </div>
+        }/>
+      <Route exact path='/people' render={()=>
+        <div>
+          <div style={headerStyle}>
+            <Header/>
+          </div>
+          <UserList />
+        </div>
+      }/>
+
+      </Switch>
+    );
+  }
 
 export default App;

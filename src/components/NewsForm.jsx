@@ -1,11 +1,11 @@
-import React from "react";
+import React from 'react';
 import PropTypes from 'prop-types';
 import { v4 } from 'uuid';
 
 function NewsForm(props) {
   let myStyledComponentStyles = {
 
-  }
+  };
   let inputStyle = {
     backgroundColor: 'lightblue',
     color: 'blue',
@@ -14,17 +14,17 @@ function NewsForm(props) {
     justifyContent: 'center',
     alignItems: 'center',
     padding: '15px',
-  }
+  };
   let userBlockStyle = {
-    borderRadius: "3px",
+    borderRadius: '3px',
     height:'40px',
     width: '40px',
     marginRight: '15px',
     backgroundColor: 'darkred'
-  }
+  };
   let inputBoxStyle = {
 
-  }
+  };
 
   let _userName = null;
   let _content = null;
@@ -39,23 +39,22 @@ function NewsForm(props) {
   }
 
   return (
-    <div style={myStyledComponentStyles}>
-      <form onSubmit={handleNewNewsItemFormSubmission}>
-        <div style={inputStyle}>
-          <div style={userBlockStyle}>
-          </div>
-          <div style={inputBoxStyle}>
+    <div style = {myStyledComponentStyles}>
+      <form onSubmit = {handleNewNewsItemFormSubmission}>
+        <div style = {inputStyle}>
+          <div style = {userBlockStyle} />
+          <div style = {inputBoxStyle}>
             <input
-              type="text"
-              placeholder="userName"
-              ref={(input) => {_userName = input;}} />
+              type = "text"
+              placeholder = "userName"
+              ref = {(input) => {_userName = input;}} />
             <textarea
-              type='text'
-              placeholder="What's Happening?"
-              ref={(textarea) => {_content = textarea;}} />
+              type = 'text'
+              placeholder = "What's Happening?"
+              ref = {(textarea) => {_content = textarea;}} />
           </div>
         </div>
-        <button type="submit">Tweet</button>
+        <button type = "submit">Tweet</button>
       </form>
       {props.onAddingNewNewsItemToMasterNewsItemList}
     </div>
@@ -66,6 +65,6 @@ function NewsForm(props) {
 NewsForm.propTypes ={
   onAddingNewNewsItemToMasterNewsItemList: PropTypes.func,
   testInputThingy: PropTypes.string
-}
+};
 
 export default NewsForm;

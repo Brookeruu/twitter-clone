@@ -1,28 +1,31 @@
-import React from "react";
-import NewsItem from "./NewsItem";
-import NewsForm from "./NewsForm";
-import PropTypes from "prop-types";
+import React from 'react';
+import NewsItem from './NewsItem';
+import NewsForm from './NewsForm';
+import PropTypes from 'prop-types';
+import faker from 'faker';
 
 class News extends React.Component {
   constructor(props){
     super(props);
     this.state = {
       masterNewsItemList: []
-    }
+    };
 
     this.handleAddingNewNewsItemToMasterNewsItemList = this.handleAddingNewNewsItemToMasterNewsItemList.bind(this);
 
     this.myStyledComponentStyles = {
       border: '1px lightblue solid',
       fontFamily: 'arial',
-    }
+    };
     this.postStyle = {
       border: '1px grey solid',
       backgroundColor: 'red',
-    }
+    };
     this.itemStyle = {
       backgroundColor: 'grey',
-    }
+    };
+    let randomName = faker.name.findName();
+    console.log(randomName);
   }
 
 
@@ -34,17 +37,17 @@ class News extends React.Component {
 
   render(props) {
     return (
-      <div style={this.myStyledComponentStyles}>
+      <div style = {this.myStyledComponentStyles}>
 
         <NewsForm
-          onAddingNewNewsItemToMasterNewsItemList={this.handleAddingNewNewsItemToMasterNewsItemList}
-          testInputThingy="testInputThingy Output"/>
+          onAddingNewNewsItemToMasterNewsItemList = {this.handleAddingNewNewsItemToMasterNewsItemList}
+          testInputThingy = "testInputThingy Output" />
 
         {this.state.masterNewsItemList.map((news) =>
-          <NewsItem userName={news.userName}
-            content={news.content}
-            timeStamp={news.timeStamp}
-            key={news.id}/>
+          <NewsItem userName = {news.userName}
+            content = {news.content}
+            timeStamp = {news.timeStamp}
+            key = {news.id} />
         )}
       </div>
     );

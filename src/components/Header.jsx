@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 function Other(props) {
   var myStyledComponentStyles = {
@@ -8,21 +8,21 @@ function Other(props) {
     justifyContent: 'space-between',
     padding: '5px',
     borderRadius: '10px',
-  }
+  };
   var styleButtons = {
-  }
+  };
   var styleTweet = {
 
-  }
+  };
   return (
-    <div style={myStyledComponentStyles}>
-      <div style={styleButtons}>
+    <div style = {myStyledComponentStyles}>
+      <div style = {styleButtons}>
         <button>Home</button>
         <button>Notifications</button>
         <button>Messages</button>
       </div>
-      <div style={styleTweet}>
-        <input placeholder="something" />
+      <div style = {styleTweet}>
+        <input placeholder = "something" />
         <button>Tweet</button>
       </div>
     </div>
